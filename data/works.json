@@ -1,0 +1,490 @@
+{
+  "works": [
+    {
+      "id": "act-textiel",
+      "title": "ACT:Textiel",
+      "line": "A communication strategy for the circular textile sector.",
+      "year": 2025,
+      "ratio": {
+        "w": 3,
+        "h": 4
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/act-textiel-1/1200/1600",
+          "w": 1200,
+          "h": 1600,
+          "alt": "ACT:Textiel, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "noord-atelier",
+      "title": "Noord Atelier",
+      "line": "A mark and packaging system built from a single thrown line.",
+      "year": 2024,
+      "ratio": {
+        "w": 4,
+        "h": 3
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/noord-atelier-1/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Noord Atelier, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "veld-festival",
+      "title": "Veld Festival",
+      "line": "Poster series for a three-day festival held on reclaimed farmland.",
+      "year": 2023,
+      "ratio": {
+        "w": 9,
+        "h": 16
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/veld-festival-1/900/1600",
+          "w": 900,
+          "h": 1600,
+          "alt": "Veld Festival, image 1 of 3"
+        },
+        {
+          "src": "https://picsum.photos/seed/veld-festival-2/900/1600",
+          "w": 900,
+          "h": 1600,
+          "alt": "Veld Festival, image 2 of 3"
+        },
+        {
+          "src": "https://picsum.photos/seed/veld-festival-3/900/1600",
+          "w": 900,
+          "h": 1600,
+          "alt": "Veld Festival, image 3 of 3"
+        }
+      ]
+    },
+    {
+      "id": "de-linie",
+      "title": "De Linie",
+      "line": "Wayfinding for a converted printing works, cut directly into steel.",
+      "year": 2022,
+      "ratio": {
+        "w": 16,
+        "h": 9
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/de-linie-1/1600/900",
+          "w": 1600,
+          "h": 900,
+          "alt": "De Linie, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "paper-weight",
+      "title": "Paper Weight",
+      "line": "A type specimen testing how optical weight survives at italic angles.",
+      "year": 2025,
+      "ratio": {
+        "w": 1,
+        "h": 1
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/paper-weight-1/1400/1400",
+          "w": 1400,
+          "h": 1400,
+          "alt": "Paper Weight, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "haven-jaarverslag",
+      "title": "Haven Jaarverslag",
+      "line": "An annual report that turns cargo manifests into a reading rhythm.",
+      "year": 2021,
+      "ratio": {
+        "w": 3,
+        "h": 4
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/haven-jaarverslag-1/1200/1600",
+          "w": 1200,
+          "h": 1600,
+          "alt": "Haven Jaarverslag, image 1 of 2"
+        },
+        {
+          "src": "https://picsum.photos/seed/haven-jaarverslag-2/1200/1600",
+          "w": 1200,
+          "h": 1600,
+          "alt": "Haven Jaarverslag, image 2 of 2"
+        }
+      ]
+    },
+    {
+      "id": "stille-kern",
+      "title": "Stille Kern",
+      "line": "Identity for a retrospective built around absence rather than object.",
+      "year": 2024,
+      "ratio": {
+        "w": 4,
+        "h": 3
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/stille-kern-1/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Stille Kern, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "rondweg",
+      "title": "Rondweg",
+      "line": "A mural proposal stretching a single gesture across a full underpass.",
+      "year": 2023,
+      "ratio": {
+        "w": 3,
+        "h": 1
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/rondweg-1/1800/600",
+          "w": 1800,
+          "h": 600,
+          "alt": "Rondweg, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "melkfabriek",
+      "title": "Melkfabriek",
+      "line": "Rebrand for a dairy turned venue, keeping the smell of milk in mind.",
+      "year": 2022,
+      "ratio": {
+        "w": 16,
+        "h": 9
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/melkfabriek-1/1600/900",
+          "w": 1600,
+          "h": 900,
+          "alt": "Melkfabriek, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "losse-eindjes",
+      "title": "Losse Eindjes",
+      "line": "A risograph zine collecting thoughts too short to finish.",
+      "year": 2025,
+      "ratio": {
+        "w": 9,
+        "h": 16
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/losse-eindjes-1/900/1600",
+          "w": 900,
+          "h": 1600,
+          "alt": "Losse Eindjes, image 1 of 4"
+        },
+        {
+          "src": "https://picsum.photos/seed/losse-eindjes-2/900/1600",
+          "w": 900,
+          "h": 1600,
+          "alt": "Losse Eindjes, image 2 of 4"
+        },
+        {
+          "src": "https://picsum.photos/seed/losse-eindjes-3/900/1600",
+          "w": 900,
+          "h": 1600,
+          "alt": "Losse Eindjes, image 3 of 4"
+        },
+        {
+          "src": "https://picsum.photos/seed/losse-eindjes-4/900/1600",
+          "w": 900,
+          "h": 1600,
+          "alt": "Losse Eindjes, image 4 of 4"
+        }
+      ]
+    },
+    {
+      "id": "bureau-noord",
+      "title": "Bureau Noord",
+      "line": "Stationery built on the practice's own construction drawings.",
+      "year": 2020,
+      "ratio": {
+        "w": 1,
+        "h": 1
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/bureau-noord-1/1400/1400",
+          "w": 1400,
+          "h": 1400,
+          "alt": "Bureau Noord, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "stads-plattegrond",
+      "title": "Stadsplattegrond",
+      "line": "Hand-drawn maps that favour memory over accurate scale.",
+      "year": 2021,
+      "ratio": {
+        "w": 4,
+        "h": 3
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/stads-plattegrond-1/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Stadsplattegrond, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "korte-golf",
+      "title": "Korte Golf",
+      "line": "Album art for a radio collective that broadcasts on short wave.",
+      "year": 2024,
+      "ratio": {
+        "w": 1,
+        "h": 1
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/korte-golf-1/1400/1400",
+          "w": 1400,
+          "h": 1400,
+          "alt": "Korte Golf, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "glasfabriek",
+      "title": "Glasfabriek",
+      "line": "Packaging redesign that lets the glass do the talking.",
+      "year": 2022,
+      "ratio": {
+        "w": 3,
+        "h": 4
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/glasfabriek-1/1200/1600",
+          "w": 1200,
+          "h": 1600,
+          "alt": "Glasfabriek, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "tussentaal",
+      "title": "Tussentaal",
+      "line": "A printed lecture on typography, delivered as an actual booklet.",
+      "year": 2023,
+      "ratio": {
+        "w": 4,
+        "h": 3
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/tussentaal-1/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Tussentaal, image 1 of 2"
+        },
+        {
+          "src": "https://picsum.photos/seed/tussentaal-2/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Tussentaal, image 2 of 2"
+        }
+      ]
+    },
+    {
+      "id": "de-oversteek",
+      "title": "De Oversteek",
+      "line": "A wayfinding proposal for a bridge most people cross without looking.",
+      "year": 2025,
+      "ratio": {
+        "w": 21,
+        "h": 9
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/de-oversteek-1/1890/810",
+          "w": 1890,
+          "h": 810,
+          "alt": "De Oversteek, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "losbladig",
+      "title": "Losbladig",
+      "line": "A modular grid built to outlast every course it will ever list.",
+      "year": 2021,
+      "ratio": {
+        "w": 3,
+        "h": 4
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/losbladig-1/1200/1600",
+          "w": 1200,
+          "h": 1600,
+          "alt": "Losbladig, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "kleine-pers",
+      "title": "Kleine Pers",
+      "line": "Letterpress invitations set by hand for an independent publisher.",
+      "year": 2020,
+      "ratio": {
+        "w": 5,
+        "h": 4
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/kleine-pers-1/1500/1200",
+          "w": 1500,
+          "h": 1200,
+          "alt": "Kleine Pers, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "onderstroom",
+      "title": "Onderstroom",
+      "line": "A campaign identity for mental health, built without a single icon.",
+      "year": 2024,
+      "ratio": {
+        "w": 9,
+        "h": 16
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/onderstroom-1/900/1600",
+          "w": 900,
+          "h": 1600,
+          "alt": "Onderstroom, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "tegenlicht",
+      "title": "Tegenlicht",
+      "line": "A photography book about landscapes that only exist backlit.",
+      "year": 2022,
+      "ratio": {
+        "w": 4,
+        "h": 3
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/tegenlicht-1/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Tegenlicht, image 1 of 3"
+        },
+        {
+          "src": "https://picsum.photos/seed/tegenlicht-2/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Tegenlicht, image 2 of 3"
+        },
+        {
+          "src": "https://picsum.photos/seed/tegenlicht-3/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Tegenlicht, image 3 of 3"
+        }
+      ]
+    },
+    {
+      "id": "rustpunt",
+      "title": "Rustpunt",
+      "line": "Signage for a hospice, designed around what calm actually looks like.",
+      "year": 2023,
+      "ratio": {
+        "w": 3,
+        "h": 4
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/rustpunt-1/1200/1600",
+          "w": 1200,
+          "h": 1600,
+          "alt": "Rustpunt, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "draadstaal",
+      "title": "Draadstaal",
+      "line": "A visual system for a trade fair built entirely from rolled steel.",
+      "year": 2020,
+      "ratio": {
+        "w": 16,
+        "h": 9
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/draadstaal-1/1600/900",
+          "w": 1600,
+          "h": 900,
+          "alt": "Draadstaal, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "blinde-vlek",
+      "title": "Blinde Vlek",
+      "line": "An exhibition explaining colour blindness through printed matter.",
+      "year": 2025,
+      "ratio": {
+        "w": 1,
+        "h": 1
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/blinde-vlek-1/1400/1400",
+          "w": 1400,
+          "h": 1400,
+          "alt": "Blinde Vlek, image 1 of 1"
+        }
+      ]
+    },
+    {
+      "id": "binnenplaats",
+      "title": "Binnenplaats",
+      "line": "Courtyard signage for a humanities building that refuses to shout.",
+      "year": 2021,
+      "ratio": {
+        "w": 4,
+        "h": 3
+      },
+      "media": [
+        {
+          "src": "https://picsum.photos/seed/binnenplaats-1/1600/1200",
+          "w": 1600,
+          "h": 1200,
+          "alt": "Binnenplaats, image 1 of 1"
+        }
+      ]
+    }
+  ]
+}

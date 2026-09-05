@@ -1,0 +1,18 @@
+:root {
+  --font-sans: 'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --bg: #144ad1;
+  --fg: #ffffff;
+  --rect: #000000;
+  --caret-w: 2px;
+  --lerp-rate: 0.12;
+}
+
+html {
+  font-size: 20px;
+}
+
+@media (max-width: 799px) {
+  html {
+    font-size: 2.25vw;
+  }
+}

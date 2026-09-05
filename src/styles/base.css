@@ -1,0 +1,272 @@
+@font-face {
+  font-family: 'Hanken Grotesk';
+  src: url('/fonts/HankenGrotesk-Variable.woff2') format('woff2-variations');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--fg);
+  overflow: hidden;
+  font-feature-settings: 'ss01' 1;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.display {
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Canvas / field ---------- */
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: none;
+  touch-action: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+
+.rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--rect);
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.rect:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 4px;
+}
+
+.rect .stack-layer {
+  position: absolute;
+  inset: 0;
+  background: var(--rect);
+}
+
+/* ---------- Cursor / caret / typed text ---------- */
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 40;
+  will-change: transform;
+}
+
+.caret {
+  position: absolute;
+  width: var(--caret-w);
+  height: 1em;
+  background: var(--fg);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+}
+
+.caret.hidden {
+  visibility: hidden;
+}
+
+.cursor-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 1.6em));
+  text-align: center;
+  max-width: 30ch;
+  color: var(--fg);
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+/* Restore native cursor over real controls. */
+.arrangement-nav,
+.arrangement-nav * ,
+.lightbox,
+.lightbox * {
+  cursor: auto;
+}
+
+/* ---------- Arrangement switcher ---------- */
+
+.arrangement-nav {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 30;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.arrangement-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--fg);
+  background: transparent;
+  color: var(--fg);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.arrangement-btn svg {
+  fill: currentColor;
+}
+
+.arrangement-btn[aria-pressed='true'] {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.arrangement-btn:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+}
+
+/* ---------- Fold / open ---------- */
+
+.stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.stage.interactive {
+  pointer-events: auto;
+}
+
+.mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.mask-back {
+  -webkit-mask-image: url('/masks/mask-a.svg');
+  mask-image: url('/masks/mask-a.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.mask-front {
+  -webkit-mask-image: url('/masks/mask-b.svg');
+  mask-image: url('/masks/mask-b.svg');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.sheet {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.sheet-back {
+  background: #000;
+}
+
+.sheet-front {
+  background-size: cover;
+  background-position: center;
+}
+
+.stage-counter {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--fg);
+  mix-blend-mode: difference;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .field,
+  .rect,
+  .stage,
+  .sheet {
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 799px) {
+  .arrangement-nav {
+    display: none;
+  }
+}
