@@ -124,12 +124,50 @@ body {
   left: 50%;
   transform: translate(-50%, calc(-50% - 1.6em));
   text-align: center;
-  max-width: 30ch;
+  max-width: 92vw;
   color: var(--fg);
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 1.35;
   white-space: pre-wrap;
+}
+
+/* ---------- Intro echoes + bottom hint ---------- */
+
+#intro-echoes {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  pointer-events: none;
+}
+
+.echo {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, calc(-50% - 1.6em));
+  text-align: center;
+  max-width: 92vw;
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+#hint {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: var(--fg);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 20;
+  text-transform: lowercase;
 }
 
 /* Restore native cursor over real controls. */
@@ -193,43 +231,28 @@ body {
   pointer-events: auto;
 }
 
-.mask {
+.card {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-}
-
-.mask-back {
-  -webkit-mask-image: url('/masks/mask-a.svg');
-  mask-image: url('/masks/mask-a.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-.mask-front {
-  -webkit-mask-image: url('/masks/mask-b.svg');
-  mask-image: url('/masks/mask-b.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-.sheet {
-  position: absolute;
-  inset: 0;
+  transform-origin: center center;
   will-change: transform;
 }
 
-.sheet-back {
+.face {
+  position: absolute;
+  inset: 0;
+  will-change: opacity;
+}
+
+.face-back {
   background: #000;
 }
 
-.sheet-front {
+.face-front {
+  background-color: #000;
   background-size: cover;
   background-position: center;
+  opacity: 0;
 }
 
 .stage-counter {
@@ -258,7 +281,7 @@ body {
   .field,
   .rect,
   .stage,
-  .sheet {
+  .card {
     transition-duration: 0.001ms !important;
   }
 }

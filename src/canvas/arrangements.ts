@@ -109,7 +109,7 @@ export function solveCloud(works: WorkMeta[], viewportW: number, viewportH: numb
 
 /** Justified rows, standard gallery algorithm. Working order. */
 export function solveGrid(works: WorkMeta[], viewportW: number): Map<string, ItemLayout> {
-  const rowWidthTarget = Math.max(viewportW * 2.2, 600);
+  const rowWidthTarget = Math.max(viewportW - 64, 600);
   const targetRowHeight = 120;
   const gutter = 24;
   const result = new Map<string, ItemLayout>();

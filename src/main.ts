@@ -26,6 +26,17 @@ const scrimEl = document.createElement('div');
 scrimEl.className = 'scrim';
 appRootEl.appendChild(scrimEl);
 
+const introEchoesEl = document.createElement('div');
+introEchoesEl.id = 'intro-echoes';
+introEchoesEl.setAttribute('aria-hidden', 'true');
+appRootEl.appendChild(introEchoesEl);
+
+const hintEl = document.createElement('div');
+hintEl.id = 'hint';
+hintEl.setAttribute('aria-hidden', 'true');
+hintEl.hidden = true;
+appRootEl.appendChild(hintEl);
+
 const MOBILE_QUERY = window.matchMedia('(max-width: 799px)');
 const REDUCED_MOTION_QUERY = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -43,44 +54,73 @@ const field = new Field(fieldEl, works, cursor, (id) => openWork(id), reducedMot
 field.setMobileMode(mobile);
 
 {
-  const initialKind: ArrangementKind = mobile ? 'grid' : 'cloud';
+  const initialKind: ArrangementKind = 'grid';
   const centroid = field.snapToArrangement(initialKind);
   const bbox = field.centroidFor(initialKind);
   camera.setBounds(bbox);
   camera.jumpTo(centroid.cx, centroid.cy);
 }
 
-if (mobile) cursor.setStatic(true);
+if (mobile) {
+  cursor.setStatic(true);
+  cursor.setPointer(window.innerWidth / 2, window.innerHeight / 2);
+}
 
 // ---------------------------------------------------------------- intro ---
+//
+// Each line appears frozen wherever the pointer was when it started, and
+// stays put -- no chasing -- until the visitor clicks (or presses
+// Enter/Space). That click stamps the line as a permanent black echo at its
+// frozen spot, then the next line appears wherever the pointer is now. By
+// the last line the screen has accumulated a scatter of these echoes.
 
 let introIndex = 0;
-const INTRO_HOLD_MS = 1200;
-const INTRO_FADE_MS = 300;
 
-function playIntroStep(): void {
+function updateHint(): void {
+  const s = appState.get();
+  if (s.kind === 'INTRO') {
+    hintEl.textContent = introIndex >= introLines.length - 1 ? 'click for a selected work' : 'click to continue';
+    hintEl.hidden = false;
+  } else if (s.kind === 'FIELD') {
+    hintEl.textContent = 'click for a selected work';
+    hintEl.hidden = false;
+  } else {
+    hintEl.hidden = true;
+  }
+}
+
+function startIntroLine(x: number, y: number): void {
   if (appState.get().kind !== 'INTRO') return;
   if (introIndex >= introLines.length) {
     finishIntro();
     return;
   }
-  const line = introLines[introIndex];
-  cursor.typeLine(line, performance.now(), () => {
-    window.setTimeout(() => {
-      cursor.startFade(performance.now());
-      window.setTimeout(() => {
-        introIndex++;
-        cursor.clearLine();
-        playIntroStep();
-      }, INTRO_FADE_MS);
-    }, INTRO_HOLD_MS);
-  });
+  cursor.freezeAt(x, y);
+  cursor.typeLine(introLines[introIndex], performance.now());
+  updateHint();
+}
+
+function advanceIntro(x: number, y: number): void {
+  if (appState.get().kind !== 'INTRO') return;
+  const text = cursor.displayedText;
+  if (text) {
+    const echo = document.createElement('div');
+    echo.className = 'echo';
+    echo.style.left = `${cursor.x}px`;
+    echo.style.top = `${cursor.y}px`;
+    echo.textContent = text;
+    introEchoesEl.appendChild(echo);
+  }
+  cursor.clearLine();
+  introIndex++;
+  startIntroLine(x, y);
 }
 
 function finishIntro(): void {
   if (appState.get().kind !== 'INTRO') return;
   cursor.clearLine();
-  const kind: ArrangementKind = mobile ? 'grid' : 'cloud';
+  cursor.unfreeze();
+  const kind: ArrangementKind = 'grid';
   appState.set({ kind: 'FIELD', arrangement: kind, hoverId: null });
   spectrum.set(kind, performance.now());
   canvasEl.style.transition = 'opacity 600ms ease';
@@ -91,16 +131,32 @@ function finishIntro(): void {
   fieldEl.removeAttribute('aria-hidden');
   if (!mobile) arrangementNavEl.hidden = false;
   updateArrangementButtons(kind);
+  updateHint();
+
+  introEchoesEl.style.transition = 'opacity 600ms ease';
+  introEchoesEl.style.opacity = '0';
+  window.setTimeout(() => introEchoesEl.remove(), 650);
 }
 
-function trySkipIntro(): void {
-  if (appState.get().kind === 'INTRO') finishIntro();
-}
-window.addEventListener('pointerdown', trySkipIntro, { capture: true });
-window.addEventListener('keydown', trySkipIntro, { capture: true });
+window.addEventListener(
+  'pointerdown',
+  (e) => {
+    if (appState.get().kind === 'INTRO') advanceIntro(e.clientX, e.clientY);
+  },
+  { capture: true },
+);
+window.addEventListener(
+  'keydown',
+  (e) => {
+    if (appState.get().kind === 'INTRO' && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      advanceIntro(cursor.pointerX, cursor.pointerY);
+    }
+  },
+  { capture: true },
+);
 
-if (mobile) cursor.setPointer(window.innerWidth / 2, window.innerHeight / 2);
-playIntroStep();
+startIntroLine(cursor.pointerX, cursor.pointerY);
 
 // ------------------------------------------------------------ pointer ---
 
@@ -172,6 +228,12 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       e.preventDefault();
       closeWork();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      lightbox.stepNext();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      lightbox.stepPrev();
     }
     return;
   }
@@ -252,6 +314,7 @@ function openWork(id: string): void {
   cursor.clearLine();
   field.hide(id);
   field.setDriftActive(false, now);
+  updateHint();
 
   lightbox.openWork(work, origin, finalW, finalH, () => {
     appState.set({ kind: 'OPEN', workId: id, mediaIndex: 0 });
@@ -285,6 +348,7 @@ function closeWork(): void {
     field.focusItem(id);
     appState.set({ kind: 'FIELD', arrangement: toArrangement, hoverId: null });
     spectrum.set(toArrangement, performance.now());
+    updateHint();
   });
 }
 
@@ -316,13 +380,14 @@ function handleResize(): void {
     field.setMobileMode(mobile);
     cursor.setStatic(mobile);
     arrangementNavEl.hidden = mobile || s.kind === 'INTRO';
-    if (s.kind === 'FIELD') {
-      const kind: ArrangementKind = mobile ? 'grid' : 'cloud';
-      const centroid = field.snapToArrangement(kind);
+    // Entering mobile mandates grid-only; leaving it can stay wherever it was,
+    // since grid is a valid desktop arrangement too.
+    if (mobile && s.kind === 'FIELD' && s.arrangement !== 'grid') {
+      const centroid = field.snapToArrangement('grid');
       camera.jumpTo(centroid.cx, centroid.cy);
-      appState.set({ kind: 'FIELD', arrangement: kind, hoverId: null });
-      spectrum.set(kind, performance.now());
-      updateArrangementButtons(kind);
+      appState.set({ kind: 'FIELD', arrangement: 'grid', hoverId: null });
+      spectrum.set('grid', performance.now());
+      updateArrangementButtons('grid');
     }
   }
 
